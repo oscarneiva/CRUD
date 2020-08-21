@@ -61,16 +61,37 @@ public class UserController {
     }
 
     // CRUD - Update
-    public void updateUser(){
-        // flush text file
+    public void updateUser(String username, String password, String newUsername, String newPassword) throws IOException {
+        FileWriter file = new FileWriter("./data/users.csv");
+
         // update one linked list element
-        // rewrite elements in the text file
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(password)){
+                users.get(i).setUsername(newUsername);
+                users.get(i).setPassword(newPassword);
+            }
+            // rewrite elements in the text file
+            file.write(users.get(i).getUsername() + "," + users.get(i).getPassword());
+            file.write(System.lineSeparator());
+        }
+
+        file.close();
     }
 
     // CRUD - Delete
-    public void deleteUser(){
-        // flush text file
-        // update one linked element to null
-        // rewrite elements in the text file
+    public void deleteUser(String username, String password) throws IOException{
+        FileWriter file = new FileWriter("./data/users.csv");
+
+        // update one linked list element
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(password)){
+                users.set(i, null);
+            }else{
+                file.write(users.get(i).getUsername() + "," + users.get(i).getPassword());
+                file.write(System.lineSeparator());
+            }
+        }
+
+        file.close();
     }
 }

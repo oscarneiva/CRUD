@@ -12,8 +12,14 @@ public class Lesson12 {
         System.out.println("Type your credentials to login:");
         String username = scanner.nextLine();
         String password = scanner.nextLine();
+        String newUsername = scanner.nextLine();
+        String newPassword = scanner.nextLine();
 
         UserController userController = new UserController();
-        userController.readUser(username, password);
+        try {
+            userController.deleteUser(username,password);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
