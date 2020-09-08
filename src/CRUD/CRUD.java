@@ -1,11 +1,11 @@
-package Lesson12;
+package CRUD;
 
 import Controller.UserController;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Lesson12 {
+public class CRUD {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
